@@ -2,7 +2,7 @@
   "name": "awesome-nestjs-boilerplate",
   "version": "9.0.0",
   "description": "Awesome NestJS Boilerplate, Typescript, Postgres, TypeORM",
-  "author": "Narek Hakobyan <narek.hakobyan.07@gmail.com>",
+  "author": "Narek Hakobyan <lx.newlight@gmail.com>",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -15,8 +15,9 @@
     "migration:generate": "npm run typeorm migration:generate -d ormconfig",
     "migration:create": "npm run typeorm migration:create -d ormconfig",
     "new": "hygen new",
-    "migration:revert": "yarn run typeorm migration:revert",
-    "schema:drop": "yarn run typeorm schema:drop",
+    "migration:revert": "npm run typeorm migration:revert",
+    "migration:run": "npm run typeorm migration:run -d ormconfig",
+    "schema:drop": "npm run typeorm schema:drop",
     "watch:dev": "ts-node-dev src/main.ts",
     "debug:dev": "cross-env TS_NODE_CACHE=false ts-node-dev --inspect --ignore '/^src/.*\\.spec\\.ts$/' src/main.ts",
     "webpack": "webpack --config webpack.config.js --progress",
@@ -30,9 +31,9 @@
     "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.json",
     "docs:dev": "vuepress dev -p 7070",
     "docs:build": "DEPLOY_ENV=gh-pages vuepress build",
-    "docs:deploy": "yarn docs:build && gh-pages -d .vuepress/dist",
+    "docs:deploy": "npm run docs:build && gh-pages -d .vuepress/dist",
     "prepare": "husky install",
-    "prerelease": "yarn docs:deploy",
+    "prerelease": "npm run docs:deploy",
     "release": "release-it"
   },
   "dependencies": {
