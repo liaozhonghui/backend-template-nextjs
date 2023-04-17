@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - "9001:3000"
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:14
+    volumes:
+      - ./db/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: develop
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: database
+  redis:
+    image: redis:7.0
+    volumes:
+      - ./db/redis:/data
+    command: redis-server --requirepass 123456
